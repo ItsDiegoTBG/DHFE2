@@ -54,9 +54,6 @@ function renderizarDatosUsuario() {
   /* ------------------- NO TOCAR NI ELIMINAR ESTA FUNCION. ------------------- */
   obtenerDatosDelUsuario();
   /* --------------- PUNTO 2: Escribe tu codigo a partir de aqui --------------- */
-  
-  //Sale Undefined
-
   var h3n = document.createElement("h3");
   h3n.textContent = datosPersona.nombre;
   document.getElementById("nombre").appendChild(h3n);
@@ -77,14 +74,16 @@ function renderizarDatosUsuario() {
 
 function recorrerListadoYRenderizarTarjetas() {
   /* ------------------ PUNTO 3: Escribe tu codigo desde aqui ------------------ */
+const fila = document.getElementById("fila");
+
 listado.forEach(
-materia => {
+listado => {
 const tarjeta = document.createElement("div");
 tarjeta.classList.add("caja");
 
 const imagen = document.createElement("img");
-imagen.src = materia.imagen;
-imagen.alt = materia.lenguajes;
+imagen.src = listado.imgUrl;
+imagen.alt = listado.lenguajes;
 tarjeta.appendChild(imagen);
 
 const lenguajesP = document.createElement("p");
@@ -93,20 +92,26 @@ lenguajesP.textContent = "Lenguajes:" + listado.lenguajes;
 tarjeta.appendChild(lenguajesP);
 
 const bimestreP = document.createElement("p");
+bimestreP.classList.add("bimestre");
+bimestreP.textContent= "Bimestre: "+ listado.bimestre;
+tarjeta.appendChild(bimestreP);
 
-
-
-}
-)
+fila.appendChild(tarjeta);});
 }
 
 function alternarColorTema() {
   /* --------------------- PUNTO 4: Escribe tu codigo aqui --------------------- */
- 
-  
-
-
+ const sitio = document.getElementById("sitio");
+ sitio.classList.toggle('dark');
 }
 
 /* --------------------- PUNTO 5: Escribe tu codigo aqui --------------------- */
 
+function checkKey(event){
+  if (event.keyCode === 70) {
+  const sobreMi = document.getElementById('sobre-mi');
+  sobreMi.classList.remove('oculto');
+  window.removeEventListener('keydown', manejarTeclado);
+  }
+}
+window.addEventListener('keydown', checkKey);
