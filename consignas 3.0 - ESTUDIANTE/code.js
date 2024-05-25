@@ -35,9 +35,19 @@ cambiarTema.addEventListener("click", alternarColorTema);
 
 function obtenerDatosDelUsuario() {
   /* --------------- PUNTO 1: Escribe tu codigo a partir de aqui --------------- */
- 
 
-
+var nombreP = prompt("Escribe tu Nombre:","Anonimo");
+datosPersona.nombre = nombreP + " ";
+var añoN = prompt("Escribe tu año de Nacimiento:",2000);
+datosPersona.edad = 2024 - añoN ;
+var ubi = prompt("Donde vives?","USA");
+datosPersona.ciudad=ubi + " ";
+var gusto =confirm("Te gusta Javascrpit?",true);
+if(gusto){
+datosPersona.interesPorJs = "Si"}
+else{
+  datosPersona.interesPorJs = "No";
+}
 }
 
 function renderizarDatosUsuario() {
@@ -45,16 +55,49 @@ function renderizarDatosUsuario() {
   obtenerDatosDelUsuario();
   /* --------------- PUNTO 2: Escribe tu codigo a partir de aqui --------------- */
   
+  //Sale Undefined
 
+  var h3n = document.createElement("h3");
+  h3n.textContent = datosPersona.nombre;
+  document.getElementById("nombre").appendChild(h3n);
 
+  var h3e = document.createElement("h3");
+  h3e.textContent = datosPersona.edad;
+  document.getElementById("edad").appendChild(h3e);
+
+  var h3c = document.createElement("h3");
+  h3c.textContent = datosPersona.ciudad;
+  document.getElementById("ciudad").appendChild(h3c);
+  
+  var h3j = document.createElement("h3");
+  h3j.textContent = datosPersona.interesPorJs;
+  document.getElementById("javascript").appendChild(h3j);
 }
 
 
 function recorrerListadoYRenderizarTarjetas() {
   /* ------------------ PUNTO 3: Escribe tu codigo desde aqui ------------------ */
-  
+listado.forEach(
+materia => {
+const tarjeta = document.createElement("div");
+tarjeta.classList.add("caja");
+
+const imagen = document.createElement("img");
+imagen.src = materia.imagen;
+imagen.alt = materia.lenguajes;
+tarjeta.appendChild(imagen);
+
+const lenguajesP = document.createElement("p");
+lenguajesP.classList.add('lenguajes');
+lenguajesP.textContent = "Lenguajes:" + listado.lenguajes;
+tarjeta.appendChild(lenguajesP);
+
+const bimestreP = document.createElement("p");
 
 
+
+}
+)
 }
 
 function alternarColorTema() {
